@@ -32,7 +32,6 @@
             return Math.round(number * 10) / 10
           }
         }
-         console.log('hi')
                                                                                                                       
         //area
          Highcharts.chart('scatter', {
@@ -82,7 +81,7 @@
         valueSuffix: ' MAMSL'
     },
     series: [{
-        name: "BCTU1 Percent of New Normal Flow",
+        name: "BCTU1 Percent of Old Normal Flow",
         lineColor: '#637994',
         color: '#91accc',
         fillColor: '#91accc',
@@ -92,7 +91,7 @@
         lineColor: 'rgb(120,160,180)',
         color: 'rgb(140,180,100)',
         fillColor: 'rgb(140,180,50)',
-        name: "BCTU1 Percent of Old Normal Flow",
+        name: "BCTU1 Percent of New Normal Flow",
         data: percentFlowData['BCTU1']['secondMedianPercentArray']
     }]
 });
