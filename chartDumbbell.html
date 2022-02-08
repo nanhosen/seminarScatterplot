@@ -1,0 +1,112 @@
+<!-- <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script> -->
+
+<html>
+   <head>
+      <title>BCTU1 Scatterplot</title>
+      <script src="https://code.highcharts.com/highcharts.js"></script>
+      <script src="https://code.highcharts.com/highcharts-more.js"></script>
+      <script src="https://code.highcharts.com/modules/dumbbell.js"></script>
+      <script src="https://code.highcharts.com/modules/exporting.js"></script>
+      <script src="https://code.highcharts.com/modules/export-data.js"></script>
+      <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+   </head>
+   
+   <body>
+      <div id = "container" style = "width: 550px; height: 400px; margin: 0 auto"></div>
+      
+      <script type = "text/javascript">
+        const flowDataPercent =
+        [
+          { name: 'AFPU1', low: 0, high: -6.305355294340326 },
+          { name: 'BCTU1', low: 0, high: -7.333523828934039 },
+          { name: 'BERU1', low: 0, high: -5.187701246138599 },
+          { name: 'BORW4', low: 0, high: 7.646884011869674 },
+          { name: 'BRBW4', low: 0, high: -1.8878874196355107 },
+          { name: 'CCSU1', low: 0, high: -4.096669748959635 },
+          { name: 'CIVU1', low: 0, high: -30.60548218235976 },
+          { name: 'ECAU1', low: 0, high: -31.09588175085239 },
+          { name: 'EMIU1', low: 0, high: 0 },
+          { name: 'EVAW4', low: 0, high: 3.156395293682099 },
+          { name: 'HRMU1', low: 0, high: -4.704262015954427 },
+          { name: 'LCTU1', low: 0, high: -10.933197259505608 },
+          { name: 'LGNU1', low: 0, high: -7.347979566002112 },
+          { name: 'MCLU1', low: 0, high: 9.46511545852761 },
+          { name: 'MILU1', low: 0, high: -12.293090704625678 },
+          { name: 'OAWU1', low: 0, high: -13.470920586027946 },
+          { name: 'PRZU1', low: 0, high: -22.772572921777762 },
+          { name: 'WOOU1', low: 0, high: -4.876117941237438 }
+        ]
+        const flowData = 
+        [
+          { name: 'AFPU1', low: 0, high: -1.2685394999999993 },
+          { name: 'BCTU1', low: 0, high: -2.291730999999995 },
+          { name: 'BERU1', low: 0, high: -5.5120624999999706 },
+          { name: 'BORW4 ', low: 0, high: 6.10274099999998 },
+          { name: 'BRBW4', low: 0, high: -2.743139499999984 },
+          { name: 'CCSU1', low: 0, high: -0.24586100000000144 },
+          { name: 'CIVU1', low: 0, high: -11.178835999999997 },
+          { name: 'ECAU1', low: 0, high: -4.193254 },
+          { name: 'EMIU1', low: 0, high: 0 },
+          { name: 'EVAW4 ', low: 0, high: 3.3401634999999885 },
+          { name: 'HRMU1', low: 0, high: -1.2872720000000015 },
+          { name: 'LCTU1', low: 0, high: -3.77397749999999 },
+          { name: 'LGNU1', low: 0, high: -6.712459499999994 },
+          { name: 'MCLU1 ', low: 0, high: 0.27094299999999993 },
+          { name: 'MILU1', low: 0, high: -0.6200334999999999 },
+          { name: 'OAWU1', low: 0, high: -15.351193500000008 },
+          { name: 'PRZU1', low: 0, high: -7.691102999999998 },
+          { name: 'WOOU1', low: 0, high: -5.4025745 }
+        ]
+
+        
+         console.log('hi')
+                                                                                                                      
+
+Highcharts.chart('container', {
+
+  chart: {
+    type: 'dumbbell',
+    inverted: true
+  },
+
+  legend: {
+    enabled: false
+  },
+
+  subtitle: {
+    text: '1981-2010 vs 1991-2020'
+  },
+
+  title: {
+    text: 'Normal Change'
+  },
+
+  tooltip: {
+    shared: true
+  },
+
+  xAxis: {
+    type: 'category'
+  },
+
+  yAxis: {
+    title: {
+      text: 'Q Change in Normal'
+    }
+  },
+
+  series: [{
+    name: 'Life expectancy change',
+    data: flowDataPercent
+  }]
+
+});
+
+
+      </script>
+      
+   </body>
+</html>
