@@ -8,6 +8,8 @@
       <title>BCTU1 Scatterplot</title>
       <!-- <script src="//rawgithub.com/phpepe/highcharts-regression/master/highcharts-regression.js?8"></script> -->
       <script src = "https://code.highcharts.com/highcharts.js"></script>
+      <script src="https://code.highcharts.com/modules/exporting.js"></script>
+      <script src="https://code.highcharts.com/modules/export-data.js"></script>
    </head>
    
    <body>
@@ -83,16 +85,26 @@
             text: 'April - July Volume'
         },
         plotLines: [{
-            color: '#FF0000',
+            color: '#060694',
             width: 2,
             value: 36.5,
-            label: 'old average'
+            label: {
+                text: 'old average',
+                y: -2,
+                x: -10,
+                align: 'right'
+            }
         },
         {
-            color: '#FF0000',
+            color: '#d91ab3',
             width: 2,
             value: 33.5,
-            label: 'new average'
+            label: {
+                text: 'new average',
+                y: 10,
+                x: -10,
+                align: 'right'
+            }
         }]
     },
     // plotOptions: {
@@ -120,7 +132,7 @@
     //     }
     // },
     series: [{
-        color: 'rgba(223, 83, 83, .5)',
+        color: '#ff992b',
         type: 'scatter',
         name: 'seasonal flow volume',
         data: 

@@ -35,9 +35,9 @@
         type: 'area',
         options3d: {
             enabled: true,
-            alpha: 15,
-            beta: 15,
-            depth: 100
+            alpha: 1,
+            beta: 3,
+            depth: 360
         }
     },
     title: {
@@ -51,44 +51,42 @@
         labels: {
             // format: '{value:,.0f} MAMSL'
         },
-        gridLineDashStyle: 'Dash',
-        tickInterval: 0.5
+        gridLineDashStyle: 'Dash'
     },
     xAxis: [{
-        visible: true,
-        tickInterval: 1
+        visible: true
     }, {
         visible: false
     }],
-    plotOptions: {
-        area: {
-            depth: 50,
-            marker: {
-                enabled: false
-            },
-            states: {
-                inactive: {
-                    enabled: false
-                }
-            }
-        }
-    },
+    // plotOptions: {
+    //     area: {
+    //         depth: 100,
+    //         marker: {
+    //             enabled: false
+    //         },
+    //         states: {
+    //             inactive: {
+    //                 enabled: false
+    //             }
+    //         }
+    //     }
+    // },
     tooltip: {
         valueSuffix: ' MAMSL'
     },
     series: [{
         name: "BCTU1 Percent of New Normal Flow",
-        lineColor: '#637994',
+        lineColor: 'rgb(180,90,50)',
         color: '#91accc',
         fillColor: '#91accc',
-        data: percentFlowData['BCTU1']['firstMedianPercentArray']
+        data: percentFlowData['BCTU1']['secondMedianPercentArray']
     }, {
         xAxis: 1,
         lineColor: 'rgb(120,160,180)',
-        color: 'rgb(140,180,100)',
+        color: 'rgb(140,180,200)',
         fillColor: 'rgb(140,180,50)',
         name: "BCTU1 Percent of Old Normal Flow",
-        data: percentFlowData['BCTU1']['secondMedianPercentArray']
+        data: percentFlowData['BCTU1']['firstMedianPercentArray']
     }]
 });
 
