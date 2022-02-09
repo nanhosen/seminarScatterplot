@@ -15,13 +15,12 @@ function median(numbers) {
 }
 
 const getDotColor = (value) =>{
-  const green = '#134e53'
-  const red = '#d13523'
+  const green = '#32a852'
+  const red = '#c42525'
   const blue = '#1a56b0'
   const grey = '#232324'
-  const manila = '#e1dbb0'
   if(Number.isInteger(value) && value == 0){
-    return manila
+    return blue
   }
   else if(value < 0){
     return red
@@ -30,7 +29,7 @@ const getDotColor = (value) =>{
     return green
   }
   else{
-    return manila
+    return blue
   }
 }
 function rounded(number){
@@ -43,63 +42,45 @@ const percentChangeAr = []
 const normalsByStn = {}
 const stnArray = Object.keys(flowData).sort()
 
+const stationDataObj = {}
+
 stnArray.map(stn =>{
   const returnAr = []
   const stnData = flowData[stn]
-  const firstSet = []
-  const secondSet = []
+  const oldNormSet = []
+  const newNormSet = []
   stnData.map(curr=>{
     const year = curr[0]
     const val = curr[1]
     if(year >=1981 && year <=2010){
-      firstSet.push(val)
+      oldNormSet.push(val)
     }
     if(year >=1991 && year <=2020){
-      secondSet.push(val)
+      newNormSet.push(val)
     }
   })
-  // console.log('firstSet', firstSet)
-  // console.log('secondSet', secondSet)
-  const firstMedian = median(firstSet)
-  const secondMedian = median(secondSet)
-  const low = firstMedian > secondMedian ? secondMedian : firstMedian
-  const high = firstMedian > secondMedian ? firstMedian : secondMedian
-  const diff = high-low
-  const diff1 = secondMedian - firstMedian
-  const diffPercent = firstMedian == secondMedian? 0 : ((secondMedian - firstMedian)/firstMedian)*100
-  normalsByStn[stn]={firstMedian, secondMedian, diffPercent}
-  const isZero = Number.isInteger(diffPercent) && diffPercent == 0 ? true : false
-  const isDiffZero = Number.isInteger(diff1) && diff1 == 0 ? true : false
-  fullAr.push({
-    // name:secondMedian > firstMedian ? `${stn} backwards` : stn,
-    name: stn,
-    low:0,
-    high: isDiffZero ? 0 : rounded(diff1),
-    color: getDotColor(diff1),
-    connectorColor: getDotColor(diff1),
-    lowColor: getDotColor(diff1)
-  })
-  
-  if(diffPercent || isZero == true){
-    percentChangeAr.push({
-      name:stn,
-      low:0,
-      high:isZero == true ? 0 : rounded(diffPercent),
-      color: getDotColor(diffPercent),
-      connectorColor: getDotColor(diffPercent),
-      lowColor: getDotColor(diffPercent)
-  
-    })
-  }else{
-    console.log('no diff percent', diffPercent, firstMedian, secondMedian)
-  }
-})
-// console.log('percentChangeAr')
-// console.log(percentChangeAr)
-console.log(`const flowDataPercent = ${JSON.stringify(percentChangeAr)} const flowData = ${JSON.stringify(fullAr)}`)
-// console.log('fullAr')
-// console.log(fullAr)
+  // console.log('oldNormSet', oldNormSet)
+  // console.log('newNormSet', newNormSet)
+  const oldMedian = median(oldNormSet)
+  const newMedian = median(newNormSet)
 
+  const belowOldNorm = []
+  const belowNewNorm = []
+
+  stnData.map(curr=>{
+    const year = curr[0]
+    const val = curr[1]
+    if(val < oldMedian){
+      belowOldNorm.push([year, val])
+    }
+    if(val < newMedian){
+      belowNewNorm.push([year, val])
+    }
+  })
+  stationDataObj[stn]={belowOldNorm, belowNewNorm, oldMedian, newMedian}
+})
+
+console.log(stationDataObj.BCTU1)
 
 // data: [{
 //   x: 1,

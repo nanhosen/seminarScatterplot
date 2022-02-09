@@ -1,0 +1,180 @@
+<!-- <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script> -->
+
+<html>
+   <head>
+      <title>BCTU1 Scatterplot</title>
+      <!-- <script src="//rawgithub.com/phpepe/highcharts-regression/master/highcharts-regression.js?8"></script> -->
+      <script src = "https://code.highcharts.com/highcharts.js"></script>
+      <script src="https://code.highcharts.com/modules/exporting.js"></script>
+      <script src="https://code.highcharts.com/modules/export-data.js"></script>
+   </head>
+   
+   <body>
+      <div id = "container" style = "width: 550px; height: 400px; margin: 0 auto"></div>
+      
+      <script type = "text/javascript">
+
+          const BCTU1Data = {
+            belowOldNorm: [
+              [ 1981, 26.352185 ],
+              [ 1987, 25.088594 ],
+              [ 1988, 19.334508 ],
+              [ 1989, 24.263213 ],
+              [ 1990, 20.896848000000002 ],
+              [ 1991, 28.650431000000005 ],
+              [ 1992, 16.437948000000002 ],
+              [ 1994, 28.633829 ],
+              [ 2000, 23.996873 ],
+              [ 2001, 23.359208000000002 ],
+              [ 2002, 29.656248 ],
+              [ 2003, 26.038994000000002 ],
+              [ 2004, 26.128051999999997 ],
+              [ 2007, 20.019599 ],
+              [ 2010, 29.266238 ],
+              [ 2012, 24.505634000000004 ],
+              [ 2013, 24.514955 ],
+              [ 2014, 23.056449999999998 ],
+              [ 2015, 16.705063000000003 ],
+              [ 2016, 23.278003 ],
+              [ 2018, 19.043295 ],
+              [ 2020, 25.59668 ]
+            ],
+            belowNewNorm: [
+              [ 1981, 26.352185 ],
+              [ 1987, 25.088594 ],
+              [ 1988, 19.334508 ],
+              [ 1989, 24.263213 ],
+              [ 1990, 20.896848000000002 ],
+              [ 1991, 28.650431000000005 ],
+              [ 1992, 16.437948000000002 ],
+              [ 1994, 28.633829 ],
+              [ 2000, 23.996873 ],
+              [ 2001, 23.359208000000002 ],
+              [ 2003, 26.038994000000002 ],
+              [ 2004, 26.128051999999997 ],
+              [ 2007, 20.019599 ],
+              [ 2012, 24.505634000000004 ],
+              [ 2013, 24.514955 ],
+              [ 2014, 23.056449999999998 ],
+              [ 2015, 16.705063000000003 ],
+              [ 2016, 23.278003 ],
+              [ 2018, 19.043295 ],
+              [ 2020, 25.59668 ]
+            ],
+            oldMedian: 31.250065499999998,
+            newMedian: 28.958334500000003
+          }
+          const {belowOldNorm, belowNewNorm, oldMedian, newMedian} = BCTU1Data
+          Highcharts.chart('container', {
+              chart: {
+                  type: 'scatter',
+                  zoomType: 'xy'
+              },
+              title: {
+                  text: 'Comparison of Below Normal Flow: 1981-2010 vs 1991-2020 for BCTU1',
+                  widthAdjust: -200
+              },
+              subtitle: {
+                  text: 'Source: CBRFC'
+              },
+              xAxis: {
+                  title: {
+                      enabled: true,
+                      text: 'Year'
+                  },
+                  startOnTick: true,
+                  endOnTick: true,
+                  showLastLabel: true,
+                  tickInterval: 0.5
+              },
+              yAxis: {
+                title: {
+                    text: 'April - July Volume'
+                },
+                tickInterval: 2,
+                plotLines: [{
+                    color: '#060694',
+                    width: 2,
+                    value: oldMedian,
+                    zIndex: 5,
+                    dashStyle: 'shortdash',
+                    label: {
+                        text: '1981-2010 Average',
+                        y: -2,
+                        x: -10,
+                        align: 'right',
+                        style: {
+                          color: 'black',
+                          fontWeight: 'bold',
+                          size: '3px'
+                        }
+                    }
+                },
+                {
+                    color: '#d91ab3',
+                    width: 2,
+                    value: newMedian,
+                    zIndex: 5,
+                    dashStyle: 'shortdash',
+                    label: {
+                        text: '1991-2020 Average',
+                        y: 12,
+                        x: -11,
+                        align: 'right',
+                        style: {
+                          color: 'black',
+                          fontWeight: 'bold',
+                          size: '3px'
+                        },
+                        
+                    }
+                }]
+            },
+              legend: {
+
+                  floating: false,
+              },
+              plotOptions: {
+                  scatter: {
+                      marker: {
+                          radius: 5,
+                          states: {
+                              hover: {
+                                  enabled: true,
+                                  lineColor: 'rgb(100,100,100)'
+                              }
+                          }
+                      },
+                      states: {
+                          hover: {
+                              marker: {
+                                  enabled: false
+                              }
+                          }
+                      },
+                      tooltip: {
+                          headerFormat: '<b>{series.name}</b><br>',
+                          pointFormat: '{point.x} cm, {point.y} kg'
+                      }
+                  }
+              },
+              series: [{
+                  name: 'Below Old Norm',
+                  color: 'rgba(223, 83, 83, .5)',
+                  data: belowOldNorm
+
+              }, {
+                  name: 'Below New Norm',
+                  color: 'rgba(119, 152, 191, .5)',
+                  data: belowNewNorm
+              }]
+          });
+                        
+
+      </script>
+      
+   </body>
+</html>
