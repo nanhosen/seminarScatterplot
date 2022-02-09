@@ -18,6 +18,7 @@ const firstSet = []
 const secondSet = []
 const normalsByStn = {}
 const negBarDataByStn = {}
+const rangeChartData = {}
 // console.log('flowData', flowData)
 for(var stn in flowData){
   // console.log('stn', stn)
@@ -25,6 +26,7 @@ for(var stn in flowData){
   const stnData = flowData[stn]
   const firstSet = []
   const secondSet = []
+  const stnRangeData = []
   stnData.map(curr=>{
     const year = curr[0]
     const val = curr[1]
@@ -54,22 +56,27 @@ const secondValsDiff = []
     categories.push(year)
     firstValsDiff.push(val-firstMedian)
     secondValsDiff.push(val - secondMedian)
-    if(year > 2010){
+    stnRangeData.push([year, obPercent1, obPercent2])
+    // if(year > 2010){
         // console.log('val', val, year)
         firstMedianPercentArray.push([year, obPercent1])
         secondMedianPercentArray.push([year, obPercent2])
-        console.log('ob2', obPercent1)
-    }
-    if(firstMedianPercentArray.length > 0 && secondMedianPercentArray.length >0){
+        // console.log('ob2', obPercent1)
+    // }
+    
+  }
+  )
+  rangeChartData[stn]=stnRangeData
+  if(firstMedianPercentArray.length > 0 && secondMedianPercentArray.length >0){
 
-      stnPercentFlow[stn]={firstMedianPercentArray, secondMedianPercentArray}
-      negBarDataByStn[stn]={categories, firstValsDiff, secondValsDiff}
-    }
-
-  })
+    stnPercentFlow[stn]={firstMedianPercentArray, secondMedianPercentArray}
+    negBarDataByStn[stn]={categories, firstValsDiff, secondValsDiff}
+  }
   
 }
-console.log(JSON.stringify(negBarDataByStn['BCTU1']))
+// console.log(JSON.stringify(rangeChartData['BCTU1']))
+console.log(JSON.stringify(stnPercentFlow))
+// console.log(JSON.stringify(negBarDataByStn['BCTU1']))
 
 
 // [
