@@ -15,8 +15,12 @@ function median(numbers) {
 }
 
 const getDotColor = (value) =>{
-  const green = '#134e53'
-  const red = '#d13523'
+  // const green = '#134e53'
+  const green = '#01665e'
+  // const red = '#d13523'
+  // const red = '#b10026'
+  const red = '#983820'
+  
   const blue = '#1a56b0'
   const grey = '#232324'
   const manila = '#e1dbb0'
